@@ -3,12 +3,11 @@
 	$server = "localhost";
 	$user = "root";
 	$password = "";
+	$database = "project";
 
-	$conn = mysqli_connect($server, $user, $password);
+	$conn = mysqli_connect($server, $user, $password, $database);
 
 	if($conn -> connect_error){
 		die("Connection failed " . $conn->connect_error);
 	}
-
-	$ronak = "ronak";
 ?>
