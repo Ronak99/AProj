@@ -26,15 +26,13 @@
 	$deviceId = $_POST["deviceId"];
 
 
-	$insertQuery = "INSERT INTO `navigator` (`$loc`, `IMEI`, `DATE`, `TIME`, `GPSFix`, `LATITUDE`, `LAT DIR`, `LONGITUDE`, `LONG DIR`, `SPEED`, `HEADING`, `CELL ID`, `SIGNAL STRENGTH`, `NO OF SATELLITE USED`, `BATT LEVEL`, `IGN STATUS`, `4 DIGITAL INPUT STATUS`, `4 TAMPERING STATUS`, `2 OUTPORT STATUS`, `ANALOG INPUT1`, `ANALOG INPUT2`, `DEVICE ID`) VALUES ('$loc', '$imei', '$date', '$time', '$gpsfix', '2', '$latDir', '2', '$longDir', '2', '2', '2', '2', '2', '2', '2', 'x', 'x', 'x', '2', '2', 'x');";
 
+	$insertQuery = "INSERT INTO `navigator` (`sno`,`loc`, `IMEI`, `DATE`, `TIME`, `GPSFix`, `LATITUDE`, `LAT DIR`, `LONGITUDE`, `LONG DIR`, `SPEED`, `HEADING`, `CELL ID`, `SIGNAL STRENGTH`, `NO OF SATELLITE USED`, `BATT LEVEL`, `IGN STATUS`, `4 DIGITAL INPUT STATUS`, `4 TAMPERING STATUS`, `2 OUTPORT STATUS`, `ANALOG INPUT1`, `ANALOG INPUT2`, `DEVICE ID`) VALUES (null, '$loc', '$imei', '$date', '$time', '$gpsfix', '$lattitude', '$latDir', '$longitude', '$longDir', '$speed', '$heading', $cellId, $signalStrength, $noOfSat, $batteryLevel, $ignStatus, '$digitalInputStatus', '$tamperingStatus', '$outportStatus', '$analogInputOne', '$analogInputTwo', '$deviceId');";
 
-
-	if($conn->query($insertQuery)){
-		echo "data was inserted";
+	if(mysqli_query($conn, $insertQuery)){
+		echo "Query executed";
 	}else{
-		echo "query was not executed successfully";
+		die(mysqli_error($conn));
 	}
-
 
 ?>
